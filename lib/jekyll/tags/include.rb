@@ -4,6 +4,7 @@ module Jekyll
       def initialize(tag_name, file, tokens)
         super
         @file = file.strip
+        @file = context[@file] || @file
       end
 
       def render(context)
