@@ -340,6 +340,7 @@ module Jekyll
     def site_payload
       {"site" => self.config.merge({
           "time"       => self.time,
+          "custom_posts" => self.custom_posts,
           "posts"      => self.posts.sort { |a, b| b <=> a },
           "pages"      => self.pages,
           "html_pages" => self.pages.reject { |page| !page.html? },
