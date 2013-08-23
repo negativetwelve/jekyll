@@ -238,6 +238,8 @@ module Jekyll
         semester = cs_post.data["semester"]
         topic = cs_post.data["topic"]
 
+        cs_post.render(self.layouts, payload)
+
         unless self.custom_posts.key? course
           self.custom_posts[course] = {}
         end
