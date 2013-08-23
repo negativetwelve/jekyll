@@ -225,6 +225,10 @@ module Jekyll
     # Returns nothing.
     def render
       payload = site_payload
+      self.custom_posts.each do |custom_post|
+        custom_post.render(self.layouts, payload)
+      end
+
       self.posts.each do |post|
         post.render(self.layouts, payload)
       end
@@ -256,9 +260,6 @@ module Jekyll
 
       # files to be written
       files = Set.new
-      self.custom_posts.each do |post|
-        files << post.destination(self.dest)
-      end
       self.posts.each do |post|
         files << post.destination(self.dest)
       end
@@ -294,9 +295,6 @@ module Jekyll
     #
     # Returns nothing.
     def write
-      self.custom_posts do |post|
-        post.write(self.dest)
-      end
       self.posts.each do |post|
         post.write(self.dest)
       end
