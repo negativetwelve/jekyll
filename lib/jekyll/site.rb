@@ -231,7 +231,7 @@ module Jekyll
         end
       end
 
-      self.custom_posts.cs_classes.each do |cs_posts|
+      self.custom_posts["cs_classes"].each do |cs_posts|
         cs_posts.each do |cs_post|
           is_note = cs_post.is_note
           is_problem = cs_post.is_problem
