@@ -56,6 +56,7 @@ module Jekyll
                                Time.now
                              end
       self.layouts         = {}
+      self.custom_posts    = {}
       self.posts           = []
       self.pages           = []
       self.static_files    = []
