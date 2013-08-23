@@ -225,8 +225,10 @@ module Jekyll
     # Returns nothing.
     def render
       payload = site_payload
-      self.custom_posts.each do |custom_post|
-        custom_post.render(self.layouts, payload)
+      self.custom_posts.each do |key, custom_post_array|
+        custom_post_array.each do |custom_post|
+          custom_post.render(self.layouts, payload)
+        end
       end
 
       self.posts.each do |post|
