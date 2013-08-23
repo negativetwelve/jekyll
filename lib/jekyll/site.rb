@@ -232,11 +232,11 @@ module Jekyll
       end
 
       self.custom_posts["cs_classes"].each do |cs_post|
-        is_note = cs_post.is_note
-        is_problem = cs_post.is_problem
-        course = cs_post.course
-        semester = cs_post.semester
-        topic = cs_post.topic
+        is_note = cs_post.data["is_note"]
+        is_problem = cs_post.data["is_problem"]
+        course = cs_post.data["course"]
+        semester = cs_post.data["semester"]
+        topic = cs_post.data["topic"]
 
         unless self.custom_posts.key? course
           self.custom_posts[course] = {}
