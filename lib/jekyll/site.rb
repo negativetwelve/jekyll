@@ -231,42 +231,39 @@ module Jekyll
         end
       end
 
-      self.custom_posts["cs_classes"].each do |cs_posts|
-        cs_posts.each do |cs_post|
-          is_note = cs_post.is_note
-          is_problem = cs_post.is_problem
-          course = cs_post.course
-          semester = cs_post.semester
-          topic = cs_post.topic
+      self.custom_posts["cs_classes"].each do |cs_post|
+        is_note = cs_post.is_note
+        is_problem = cs_post.is_problem
+        course = cs_post.course
+        semester = cs_post.semester
+        topic = cs_post.topic
 
-          unless self.custom_posts.key? course
-            self.custom_posts[course] = {}
-          end
+        unless self.custom_posts.key? course
+          self.custom_posts[course] = {}
+        end
 
-          unless self.custom_posts[course].key? semester
-            self.custom_posts[course][semester] = {}
-          end
+        unless self.custom_posts[course].key? semester
+          self.custom_posts[course][semester] = {}
+        end
 
-          unless self.custom_posts[course][semester].key? topic
-            self.custom_posts[course][semester][topic] = {}
-          end
+        unless self.custom_posts[course][semester].key? topic
+          self.custom_posts[course][semester][topic] = {}
+        end
 
-          unless self.custom_posts[course][semester][topic].key? "notes"
-            self.custom_posts[course][semester][topic]["notes"] = []
-          end
+        unless self.custom_posts[course][semester][topic].key? "notes"
+          self.custom_posts[course][semester][topic]["notes"] = []
+        end
 
-          unless self.custom_posts[course][semester][topic].key? "problems"
-            self.custom_posts[course][semester][topic]["problems"] = []
-          end
+        unless self.custom_posts[course][semester][topic].key? "problems"
+          self.custom_posts[course][semester][topic]["problems"] = []
+        end
 
-          if is_note
-            self.custom_posts[course][semester][topic]["notes"].push(cs_post)
-          elsif is_problem
-            self.custom_posts[course][semester][topic]["problems"].push(cs_post)
-          else
-            puts "#{cs_post.name} is not a problem or a note..."
-          end
-
+        if is_note
+          self.custom_posts[course][semester][topic]["notes"].push(cs_post)
+        elsif is_problem
+          self.custom_posts[course][semester][topic]["problems"].push(cs_post)
+        else
+          puts "#{cs_post.name} is not a problem or a note..."
         end
       end
 
