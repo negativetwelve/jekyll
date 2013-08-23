@@ -256,6 +256,9 @@ module Jekyll
 
       # files to be written
       files = Set.new
+      self.custom_posts.each do |post|
+        files << post.destination(self.dest)
+      end
       self.posts.each do |post|
         files << post.destination(self.dest)
       end
@@ -291,6 +294,9 @@ module Jekyll
     #
     # Returns nothing.
     def write
+      self.custom_posts do |post|
+        post.write(self.dest)
+      end
       self.posts.each do |post|
         post.write(self.dest)
       end
