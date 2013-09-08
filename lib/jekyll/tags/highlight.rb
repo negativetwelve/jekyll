@@ -41,6 +41,7 @@ eos
       end
 
       def render(context)
+        @lang = context[@lang] || @lang
         if context.registers[:site].pygments
           render_pygments(context, super)
         else
